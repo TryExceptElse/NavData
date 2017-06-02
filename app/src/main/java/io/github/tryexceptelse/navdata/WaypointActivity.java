@@ -20,7 +20,6 @@ public class WaypointActivity extends AppCompatActivity {
     // key for storing last used path in preferences
     private static final String PATH_PERSISTENCE_KEY = "last_path_name";
 
-    private File pathDir; // essentially final
     private PathModel pathModel; // essentially final
 
     private Path activePath; // currently selected path
@@ -34,7 +33,7 @@ public class WaypointActivity extends AppCompatActivity {
         setContentView(R.layout.waypoint);
 
         // create model for accessing and manipulating paths
-        pathDir = new File(getFilesDir(), PATH_DIR_NAME);
+        final File pathDir = new File(getFilesDir(), PATH_DIR_NAME);
         pathModel = new PathModel(pathDir);
         activePath = reopenLastPath();
 
@@ -42,6 +41,7 @@ public class WaypointActivity extends AppCompatActivity {
         pathSelector = (Spinner) findViewById(R.id.pathSelector);
 
         // setup ui
+        populatePathSelector();
     }
 
     protected void populatePathSelector(){

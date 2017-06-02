@@ -50,7 +50,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/pathSelector"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="pathSelectorClicked" />
 
     <Button
         android:layout_width="wrap_content"
@@ -59,9 +60,9 @@
         android:id="@+id/rmvPathBtn"
         android:textColor="@color/btn_text"
         android:background="@android:color/transparent"
+        android:onClick="rmvPathPressed"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/pathSelector"
-        android:onClick="rmvPathPressed" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,8 +71,8 @@
         android:id="@+id/addPathBtn"
         android:textColor="@color/btn_text"
         android:background="@android:color/transparent"
+        android:onClick="addPathPressed"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/rmv_wp_btn"
-        android:onClick="addPathPressed" />
+        android:layout_toStartOf="@+id/rmvPathBtn" />
 
 </RelativeLayout>
