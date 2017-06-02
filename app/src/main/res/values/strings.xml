@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Nav Data</string>
+    <string name="connect">Edit Connection</string>
+    <string name="edit_waypoints">Edit Waypoints</string>
+    <string name="fullscreen_title">Nav Data</string>
+
+    <string name="title_activity_waypoint">WaypointActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_map">Waypoints</string>
+    <string name="waypoints_title">Waypoints</string>
+    <string name="select_path_prompt">Select path to edit</string>
+    <string name="add_wp">Add Waypoint</string>
+    <string name="remove_last_wp">Remove Last</string>
+
+
+</resources>
