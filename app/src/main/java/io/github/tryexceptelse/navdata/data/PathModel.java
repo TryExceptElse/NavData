@@ -1,5 +1,7 @@
 package io.github.tryexceptelse.navdata.data;
 
+import android.support.annotation.Nullable;
+
 import org.json.JSONException;
 
 import java.io.File;
@@ -10,6 +12,7 @@ import java.util.NoSuchElementException;
  * Used to access, create, and modify paths.
  */
 public final class PathModel {
+    // todo: write test class for PathModel
     private static final String PATH_DIR_NAME = "Paths"; // name of dir storing path files.
 
     private final File pathDir; // File
@@ -33,15 +36,26 @@ public final class PathModel {
 
     /**
      * Returns boolean of whether or not pathModel contains a path of passed name.
-     * @param pathName: String
+     * @param pathName: Object
      * @return boolean
      */
-    public boolean contains(String pathName){
-        return new File(pathDir, pathName).exists();
+    public boolean contains(@Nullable Object pathName){
+        if (pathName instanceof String){
+            return new File(pathDir, (String) pathName).exists();
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Gets path of passed name if it exists or otherwise throws
+     * Returns boolean of whether model is empty of all paths.
+     * @return boolean
+     */
+    public boolean isEmpty(){
+        return getPathNames().length == 0;
+    }
+
+    /**
      * NoSuchElementException.
      * @param pathName: String
      * @return Path
