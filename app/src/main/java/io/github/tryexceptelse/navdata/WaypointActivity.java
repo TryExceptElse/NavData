@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -42,6 +43,7 @@ public class WaypointActivity extends AppCompatActivity {
 
         // setup ui
         populatePathSelector();
+        pathSelector.setOnTouchListener(this::pathSelectorClicked);
     }
 
     protected void populatePathSelector(){
@@ -56,8 +58,6 @@ public class WaypointActivity extends AppCompatActivity {
         // if previously selected path exists, set pathSelector to that path
         if (activePath != null){
             pathSelector.setSelection(adapter.getPosition(activePath.name()));
-        } else {
-            pathSelector.setSelection(0); // 0 index will always exist
         }
     }
 
@@ -74,8 +74,7 @@ public class WaypointActivity extends AppCompatActivity {
 
     // controller methods, called upon user interaction with views
 
-    public void pathSelectorClicked(View v){
-    }
+    // these need to be public to be referenced from the layout
 
     public void addPathPressed(View v){
     }
@@ -87,5 +86,13 @@ public class WaypointActivity extends AppCompatActivity {
     }
 
     public void rmvWpPressed(View v){
+    }
+
+    // these can be private, as they are connected to ui widgets
+    // from within this class
+
+    private boolean pathSelectorClicked(View view, MotionEvent motionEvent) {
+        populatePathSelector(); // update items in spinner
+        return false; // this should pass on the motionEvent, not consume it.
     }
 }

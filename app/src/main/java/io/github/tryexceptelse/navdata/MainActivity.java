@@ -94,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        // findViewById(R.id.wp_btn).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.wp_btn).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.connect_btn).setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override

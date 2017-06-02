@@ -46,22 +46,22 @@
 
             <Button
                 android:id="@+id/wp_btn"
-                style="?metaButtonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edit_waypoints"
                 android:textColor="@color/btn_text"
                 android:singleLine="true"
-                android:onClick="editWaypointsPressed" />
+                android:onClick="editWaypointsPressed"
+                android:layout_margin="2dp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/connect"
                 android:id="@+id/connect_btn"
-                style="?metaButtonBarButtonStyle"
                 android:textColor="@color/btn_text"
-                android:onClick="editConnectionPressed" />
+                android:onClick="editConnectionPressed"
+                android:layout_margin="2dp" />
         </LinearLayout>
 
         <LinearLayout
