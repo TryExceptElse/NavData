@@ -8,71 +8,68 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="io.github.tryexceptelse.navdata.WaypointActivity"
-    style="@style/main_style">
+    style="@style/internal_layout_style">
 
     <fragment
+        android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.MapFragment"
-        android:id="@+id/fragment"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/add_wp_btn"
-        android:layout_below="@+id/rmvPathBtn" />
+        android:layout_below="@+id/rmvPathBtn"
+        android:layout_margin="2dp" />
 
     <Button
+        android:id="@+id/add_wp_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/add_wp_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        style="?metaButtonBarButtonStyle"
         android:text="@string/add_wp"
-        android:textColor="@color/btn_text"
         android:singleLine="true"
-        android:background="@android:color/transparent"
-        android:onClick="addWpPressed" />
+        android:onClick="addWpPressed"
+        android:layout_margin="2dp" />
 
     <Button
+        android:id="@+id/rmv_wp_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remove_last_wp"
-        android:id="@+id/rmv_wp_btn"
-        style="?metaButtonBarButtonStyle"
-        android:textColor="@color/btn_text"
         android:singleLine="true"
-        android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="rmvWpPressed" />
+        android:onClick="rmvWpPressed"
+        android:layout_margin="2dp" />
 
     <Spinner
+        android:id="@+id/pathSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pathSelector"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:onClick="pathSelectorClicked" />
+        android:gravity="left"
+        android:spinnerMode="dropdown"
+        android:layout_margin="2dp" />
 
     <Button
+        android:id="@+id/rmvPathBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rmvPathBtnStr"
-        android:id="@+id/rmvPathBtn"
-        android:textColor="@color/btn_text"
-        android:background="@android:color/transparent"
         android:onClick="rmvPathPressed"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_margin="2dp" />
 
     <Button
+        android:id="@+id/addPathBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/addPathBtnStr"
-        android:id="@+id/addPathBtn"
-        android:textColor="@color/btn_text"
-        android:background="@android:color/transparent"
         android:onClick="addPathPressed"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/rmvPathBtn" />
+        android:layout_toStartOf="@+id/rmvPathBtn"
+        android:layout_margin="2dp" />
 
 </RelativeLayout>

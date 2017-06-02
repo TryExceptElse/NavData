@@ -2,10 +2,14 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Specific widget styles -->
+        <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownStyle</item>
+        <item name="android:spinnerItemStyle">@style/spinnerStyle</item>
+        <item name="android:buttonStyle">@style/buttonStyle</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -33,6 +37,33 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/background_khaki_green</item>
+    </style>
+
+    <style name="internal_layout_style">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:background">@color/background_khaki_green</item>
+    </style>
+
+    <style name="spinnerDropDownStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/default_text</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="spinnerStyle" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:textColor">@color/default_text</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:padding">5sp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="buttonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/default_text</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:paddingLeft">12sp</item>
+        <item name="android:paddingRight">12sp</item>
+        <item name="android:paddingTop">6sp</item>
+        <item name="android:paddingBottom">6sp</item>
     </style>
 
 </resources>
