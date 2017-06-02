@@ -13,8 +13,6 @@ import java.util.NoSuchElementException;
  */
 public final class PathModel {
     // todo: write test class for PathModel
-    private static final String PATH_DIR_NAME = "Paths"; // name of dir storing path files.
-
     private final File pathDir; // File
 
     public PathModel(File pathDir){

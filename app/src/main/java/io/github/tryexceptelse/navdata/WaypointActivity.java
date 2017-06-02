@@ -1,6 +1,7 @@
 package io.github.tryexceptelse.navdata;
 
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +41,7 @@ public class WaypointActivity extends AppCompatActivity {
         // find ui instances
         pathSelector = (Spinner) findViewById(R.id.pathSelector);
 
-        populatePathSelector();
+        // setup ui
     }
 
     protected void populatePathSelector(){
@@ -64,9 +65,27 @@ public class WaypointActivity extends AppCompatActivity {
      * Returns last path that was being manipulated in app.
      * @return Path
      */
+    @Nullable
     private Path reopenLastPath(){
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         final String lastPathName = prefs.getString(PATH_PERSISTENCE_KEY, null);
         return (pathModel.contains(lastPathName)) ? pathModel.get(lastPathName) : null;
+    }
+
+    // controller methods, called upon user interaction with views
+
+    public void pathSelectorClicked(View v){
+    }
+
+    public void addPathPressed(View v){
+    }
+
+    public void rmvPathPressed(View v){
+    }
+
+    public void addWpPressed(View v){
+    }
+
+    public void rmvWpPressed(View v){
     }
 }
