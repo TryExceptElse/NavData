@@ -1,5 +1,6 @@
 package io.github.tryexceptelse.navdata.data;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import org.json.JSONException;
@@ -30,6 +31,37 @@ public final class PathModel {
            names[i] = files[i].getName();
         }
         return names;
+    }
+
+    /**
+     * Add path to model
+     * @param path: Path
+     */
+    public boolean add(Path path){
+        // get file for path
+        final File f = getPathFile(path.name());
+        try{
+            path.toJsonFile(f);
+            return true;
+        } catch (IOException | JSONException e){
+            return false;
+        }
+    }
+
+    /**
+     * Removes passed path from model
+     */
+    public boolean remove(Path path){
+        return remove(path.name());
+    }
+
+    /**
+     * Removes path of passed name from model
+     */
+    public boolean remove(String pathName) {
+        final File f = getPathFile(pathName);
+        // if file does not exist or could not be deleted, return false.
+        return f.exists() && f.delete();
     }
 
     /**
@@ -86,5 +118,14 @@ public final class PathModel {
         if (!pathDir.exists() && !pathDir.mkdir()){
             throw new RuntimeException("Path Directory did not exist and could not be created.");
         }
+    }
+
+    /**
+     * Gets path file of passed name located in pathDir.
+     * @param name: String
+     * @return File
+     */
+    private File getPathFile(@NonNull String name){
+        return new File(pathDir, name);
     }
 }
