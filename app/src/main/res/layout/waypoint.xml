@@ -1,59 +1,73 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0099cc"
-    tools:context="io.github.tryexceptelse.navdata.WaypointActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="io.github.tryexceptelse.navdata.WaypointActivity"
+    style="@style/main_style">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/fragment"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/add_wp_btn"
+        android:layout_below="@+id/addPathBtn" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        style="@style/main_style">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_wp_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        style="?metaButtonBarButtonStyle"
+        android:text="@string/add_wp"
+        android:textColor="@color/btn_text"
+        android:singleLine="true"
+        android:background="@android:color/transparent" />
 
-        <LinearLayout
-            android:id="@+id/fullscreen_controls_lower"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/remove_last_wp"
+        android:id="@+id/rmv_wp_btn"
+        style="?metaButtonBarButtonStyle"
+        android:textColor="@color/btn_text"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 
-            <Button
-                android:id="@+id/add_wp_btn"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/add_wp" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pathSelector"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-            <Button
-            android:id="@+id/remove_wp_btn"
-            style="?metaButtonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/remove_last_wp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rmvPathBtnStr"
+        android:id="@+id/addPathBtn"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/fragment"
+        android:textColor="@color/btn_text"
+        android:background="@android:color/transparent" />
 
-        </LinearLayout>
-    </FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addPathBtnStr"
+        android:id="@+id/rmvPathBtn"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/addPathBtn"
+        android:textColor="@color/btn_text"
+        android:background="@android:color/transparent" />
 
-</FrameLayout>
+</RelativeLayout>

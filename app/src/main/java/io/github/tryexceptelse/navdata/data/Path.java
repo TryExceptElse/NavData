@@ -1,11 +1,20 @@
 package io.github.tryexceptelse.navdata.data;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.StringDef;
+import android.util.JsonReader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayDeque;
 
 /**
@@ -53,6 +62,25 @@ public class Path extends ArrayDeque<Waypoint>{
         return fromJsonObj(new JSONObject(jsonStr));
     }
 
+    /**
+     * Creates a Path obj from a File
+     * @param f: File
+     * @return Path
+     * @throws JSONException
+     */
+    public static Path fromJsonFile(File f) throws JSONException, IOException{
+        // use try with resources block to ensure fileStream is closed
+        // if an exception is raised
+        try (final InputStream fileStream = new FileInputStream(f)){
+            // now read file into a String
+            int size = fileStream.available();
+            byte[] buffer = new byte[size];
+            fileStream.read(buffer);
+            final String jsonStr = new String(buffer, "UTF-8"); // make str from buffer
+            return fromJsonStr(jsonStr); // parse str
+        }
+    }
+
     public static Path fromJsonObj(JSONObject jsonObject) throws JSONException{
         final JSONArray wpArray = jsonObject.getJSONArray("waypoints");
         final String name = jsonObject.getString("name");
@@ -93,5 +121,25 @@ public class Path extends ArrayDeque<Waypoint>{
 
     public String toJsonStr() throws JSONException{
         return toJsonObj().toString();
+    }
+
+    public void toJsonFile(File f) throws IOException, JSONException{
+        // use try-with-resources block to ensure writers are closed
+        try (
+                final FileWriter fw = new FileWriter(f);
+                final BufferedWriter bw = new BufferedWriter(fw)
+        ){
+            bw.write(toJsonStr());
+        }
+    }
+
+    // Getters + Setters
+
+    public String name(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 }

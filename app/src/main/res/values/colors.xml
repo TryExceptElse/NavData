@@ -9,5 +9,6 @@
     <color name="background_text">#1c262e</color>
     <color name="title_text">#ffffff</color>
     <color name="btn_text">#ffffff</color>
+    <color name="btn_back">#f81d1b1b</color>
     <color name="status_text">#ffffff</color>
 </resources>

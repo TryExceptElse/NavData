@@ -41,11 +41,7 @@
         <activity
             android:name=".MapFrag"
             android:label="@string/title_activity_map" />
-        <activity
-            android:name=".WaypointActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_waypoint"
-            android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name=".WaypointActivity"></activity>
     </application>
 
 </manifest>

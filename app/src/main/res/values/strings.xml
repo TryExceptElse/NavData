@@ -12,6 +12,8 @@
     <string name="select_path_prompt">Select path to edit</string>
     <string name="add_wp">Add Waypoint</string>
     <string name="remove_last_wp">Remove Last</string>
+    <string name="addPathBtnStr">New</string>
+    <string name="rmvPathBtnStr">Del</string>
 
 
 </resources>
