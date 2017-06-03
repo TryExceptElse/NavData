@@ -66,4 +66,12 @@
         <item name="android:paddingBottom">6sp</item>
     </style>
 
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        // actually kinda looks good as a high-contrast warning
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

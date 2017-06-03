@@ -157,8 +157,6 @@ public class MainActivity extends AppCompatActivity {
      * Method called upon user pressing 'edit waypoints' button
      */
     public void editWaypointsPressed(View v){
-        // todo: open WaypointActivity
-        System.out.println("edit wp pressed");
         Intent i=new Intent(MainActivity.this, WaypointActivity.class);
         startActivity(i);
     }
