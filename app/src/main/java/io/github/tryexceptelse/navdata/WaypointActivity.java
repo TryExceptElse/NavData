@@ -271,9 +271,6 @@ public class WaypointActivity extends AppCompatActivity {
     private void showOverwritePathDlg(@NonNull String name){
         final AlertDialog.Builder builder = new AlertDialog.Builder(
                 new ContextThemeWrapper(this, R.style.AlertDialogStyle));
-        // create text entry field
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
 
         // Add the buttons
         builder.setPositiveButton(
