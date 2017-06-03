@@ -243,6 +243,7 @@ public class WaypointActivity extends AppCompatActivity {
         // create text entry field
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
 
         // Add the buttons
         builder.setPositiveButton(

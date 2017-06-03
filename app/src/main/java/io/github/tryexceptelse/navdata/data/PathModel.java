@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 /**
  * Used to access, create, and modify paths.
  */
-public final class PathModel {
+public class PathModel {
     // todo: write test class for PathModel
     private final File pathDir; // File
 
