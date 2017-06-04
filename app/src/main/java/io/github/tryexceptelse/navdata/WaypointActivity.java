@@ -135,6 +135,7 @@ public class WaypointActivity extends AppCompatActivity {
      */
     private boolean removePath(String pathName){
         if (pathModel.remove(pathName)){
+            populatePathSelector(); // update pathSelector options
             return true; // if removal succeeds, do nothing more.
         }
         // otherwise give user a dialog
@@ -163,6 +164,7 @@ public class WaypointActivity extends AppCompatActivity {
         }
         final Path newPath = new Path(name);
         pathModel.add(newPath);
+        populatePathSelector(); // update pathSelector options
     }
 
     // dialog methods
