@@ -1,8 +1,10 @@
 package io.github.tryexceptelse.navdata;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -243,6 +245,9 @@ public class WaypointActivity extends AppCompatActivity {
         // create text entry field
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setTextColor(ContextCompat.getColor(this, R.color.default_text));
+        // set font to be consistent
+        input.setTypeface(Typeface.MONOSPACE);
         builder.setView(input);
 
         // Add the buttons

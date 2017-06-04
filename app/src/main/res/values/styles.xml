@@ -74,4 +74,7 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="AlertTextEditStyle" parent="android:Theme.Holo.Dialog">
+    </style>
+
 </resources>
