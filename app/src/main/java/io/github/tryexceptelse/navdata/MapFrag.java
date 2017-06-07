@@ -1,5 +1,9 @@
 package io.github.tryexceptelse.navdata;
 
+import android.content.Context;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -9,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -57,10 +62,12 @@ public class MapFrag extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        // move camera to current (or last known) position
+        setCameraToStartPos();
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         // connect controller methods
         mMap.setOnMapClickListener(this::onMapClick);
@@ -101,6 +108,35 @@ public class MapFrag extends FragmentActivity implements OnMapReadyCallback {
         path.remove(wp); // remove wp from path
         wpRemoveNotifier.notifyObservers(wp);
         return true;
+    }
+
+    protected void setCameraToStartPos(){
+        LocationManager locationManager =
+                (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+
+        try{
+            Location location = locationManager.getLastKnownLocation(
+                    locationManager.getBestProvider(criteria, false));
+            if (location != null) {
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                        new LatLng(location.getLatitude(), location.getLongitude()),
+                        13));
+
+                CameraPosition newCamPos = new CameraPosition.Builder()
+                        .target(new LatLng(         // Sets map focus to user position
+                                location.getLatitude(),
+                                location.getLongitude()
+                        ))
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(0)                 // Sets the orientation of the camera to north
+                        .build();                   // Create CameraPosition
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(newCamPos));
+            }
+        } catch (SecurityException ignore) {
+            // if we can't get position, don't move the camera
+            System.out.println("Could not get position: security exception");
+        }
     }
 
 
