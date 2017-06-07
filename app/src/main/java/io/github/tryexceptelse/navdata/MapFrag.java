@@ -3,6 +3,7 @@ package io.github.tryexceptelse.navdata;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,15 +13,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
-import java.util.function.Consumer;
 
 import io.github.tryexceptelse.navdata.data.Path;
 import io.github.tryexceptelse.navdata.data.Waypoint;
 
 public class MapFrag extends FragmentActivity implements OnMapReadyCallback {
+
+    private static final String TAG = "Map Fragment"; // used as debugging identifier
 
     private GoogleMap mMap;
 
@@ -61,6 +61,10 @@ public class MapFrag extends FragmentActivity implements OnMapReadyCallback {
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        // connect controller methods
+        mMap.setOnMapClickListener(this::onMapClick);
+        mMap.setOnMarkerClickListener(this::onMarkerClick);
     }
 
     @Nullable
@@ -110,6 +114,16 @@ public class MapFrag extends FragmentActivity implements OnMapReadyCallback {
      * @return boolean (whether to consume event or not) -> always false
      */
     protected boolean onMapClick(LatLng point){
+        return false; // don't consume event
+    }
+
+    /**
+     * Called when user clicks a marker on the map.
+     * (But not when pressed for long duration, dragged, etc)
+     * @param marker: Marker
+     * @return boolean (whether to consume event or not) -> always false
+     */
+    protected boolean onMarkerClick(Marker marker){
         return false; // don't consume event
     }
 }

@@ -18,6 +18,12 @@ public class PathModel {
 
     public PathModel(File pathDir){
         this.pathDir = pathDir;
+        if (!pathDir.exists()){
+            pathDir.mkdir();
+        } else if (!pathDir.isDirectory()){
+            throw new IllegalStateException(
+                    "Passed pathDir already has been created and is not a directory");
+        }
     }
 
     public String[] getPathNames(){

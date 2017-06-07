@@ -256,7 +256,7 @@ public class WaypointActivity extends AppCompatActivity {
         builder.setPositiveButton(
                 R.string.create, // string appearing on btn
                 // if clicked, create a 'create path' dlg
-                (dialog, id) -> showCreatePathDlg());
+                (dialog, id) -> createPath(input.getText().toString()));
         builder.setNegativeButton(
                 R.string.cancel, // string appearing on button
                 null); // do nothing special if dialog is closed.
