@@ -1,5 +1,9 @@
 # Nav Data
 
+## Important Notices
+
+* Main Layout: --> content_main.xml
+
 ## ToDo
 
 * Edit Layout
