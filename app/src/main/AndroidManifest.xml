@@ -41,6 +41,14 @@
         <activity
             android:name=".MapFrag"
             android:label="@string/title_activity_map" />
-        <activity android:name=".WaypointActivity"></activity>
+        <activity android:name=".WaypointActivity" />
+        <activity android:name=".data.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
+
 </manifest>
